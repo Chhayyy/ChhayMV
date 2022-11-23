@@ -23,8 +23,11 @@ function Product() {
 
   return (
     <>
-      <section className="px-10  ">
-        <h1 className=" text-xl py-6">All</h1>
+      <section className="px-10 py-12 ">
+        <h1 className="text-center text-4xl uppercase text-red-500 font-bold">
+          Free Movie
+        </h1>
+        <h1 className=" text-red-500 text-xl py-6 font-bold ">All</h1>
         <div className="grid grid-cols-5 gap-8">
           {titles.map((title) => {
             const { id, original_title, vote_average, poster_path } = title;
@@ -42,7 +45,7 @@ function Product() {
 
                   <p>{vote_average}</p>
                 </div>
-                <Button />
+                <Button id={id} />
               </div>
             );
           })}
