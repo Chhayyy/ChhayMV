@@ -6,7 +6,9 @@ function MyApp({ Component, pageProps }) {
       <nav className="flex justify-between px-10 py-4 shadow-md ">
         <div>
           <Link href="/">
-            <span className=" text-blue-600 font-bold text-2xl">CamMovie</span>
+            <span className=" text-blue-600 font-bold text-2xl">
+              ChhayMovie
+            </span>
           </Link>
         </div>
         <div className="flex gap-4">
