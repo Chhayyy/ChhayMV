@@ -8,7 +8,7 @@ import Button from "../Button";
 
 function Detail() {
   const router = useRouter();
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState(null);
 
   const getMv = async (id) => {
     if (!id) return;
@@ -23,6 +23,12 @@ function Detail() {
   useEffect(() => {
     getMv(router.query.id);
   }, [router.query.id]);
+  if (!movie)
+    return (
+      <>
+        <h1> Loading.....</h1>
+      </>
+    );
 
   return (
     <>
