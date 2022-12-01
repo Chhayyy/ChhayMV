@@ -4,11 +4,16 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
-import Button from "../Button";
+
+import { FavoriteProvider, useFavorite } from "../store/favorite";
+import { useContext } from "react";
+import { Favorite } from "../store/favorite";
 
 function Detail() {
   const router = useRouter();
   const [movie, setMovie] = useState(null);
+  const { addFavorite, itemIsFavorite, removeFavorite, favorite } =
+    useFavorite();
 
   const getMv = async (id) => {
     if (!id) return;
@@ -23,16 +28,17 @@ function Detail() {
   useEffect(() => {
     getMv(router.query.id);
   }, [router.query.id]);
+
   if (!movie)
     return (
       <>
-        <h1> Loading.....</h1>
+        <h1 className=" text-red-500 text-center text-lg"> Loading.....</h1>
       </>
     );
 
   return (
     <>
-      <section className="text-white flex px-10 w-auto gap-16 bg-black h-auto  ">
+      <section className="text-white flex px-10 w-auto gap-16 bg-black h-auto py-4">
         <div className="f">
           <Image
             className="w-full h-auto"
@@ -45,9 +51,23 @@ function Detail() {
         <div className="flex flex-col gap-6 ">
           <h1 className=" text-6xl font-semibold ">{movie.original_title}</h1>
           <p>{movie.overview}</p>
+
           <h1 className=" text-xl ">
             Budget: <span className="font-semibold">${movie.budget}</span>
           </h1>
+          <div>
+            <p>Price: ${movie.vote_count}</p>
+          </div>
+          <button
+            onClick={() =>
+              itemIsFavorite(movie.id)
+                ? removeFavorite(movie.id)
+                : addFavorite(movie)
+            }
+            className=" bg-white text-black py-2 hover:scale-105 transition-all hover:text-red-500 flex flex-row justify-center gap-1"
+          >
+            Add to Favorite{" "}
+          </button>
         </div>
       </section>
     </>

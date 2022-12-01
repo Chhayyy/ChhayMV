@@ -45,6 +45,7 @@ function Product() {
 
                   <p>{vote_average}</p>
                 </div>
+
                 <Button id={id} />
               </div>
             );
