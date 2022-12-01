@@ -66,7 +66,7 @@ function Detail() {
             }
             className=" bg-white text-black py-2 hover:scale-105 transition-all hover:text-red-500 flex flex-row justify-center gap-1"
           >
-            Add to Favorite{" "}
+            Add to Favorite
           </button>
         </div>
       </section>
